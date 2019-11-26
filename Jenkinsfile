@@ -33,4 +33,23 @@
           docker.image('dockersamples:worker').push('worker')
         }
     }
+    stage('SSH transfer') {
+      script {
+        sshPublisher(
+          continueOnError: false, failOnError: true,
+          publishers: [
+            sshPublisherDesc(
+              configName: "Docker Swarm Manager",
+              verbose: true,
+              transfers: [
+                sshTransfer(
+                  sourceFiles: "./docker-stack.yml, ./docker-stack.yml",
+                  removePrefix: ".",
+                  remoteDirectory: ".",
+                  execCommand: "docker stack deploy --compose-file docker-stack.yml vote"
+                )
+             ])
+         ])
+       }
+     }
   }
