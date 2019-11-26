@@ -1,4 +1,3 @@
-pipeline {
   node( 'ubuntu1804' ) {
     stage('Build result') {
       steps {
@@ -48,4 +47,3 @@ pipeline {
       }
     }
   }
-}
