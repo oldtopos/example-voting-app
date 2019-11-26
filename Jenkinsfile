@@ -24,17 +24,11 @@
      }
     }
     stage('Push vote image') {
-      when {
-        branch 'master'
-      }
         docker.withRegistry('https://888283091142.dkr.ecr.us-west-2.amazonaws.com/dockersamples') {
           docker.image('dockersamples:vote').push('vote')
         }
     }
     stage('Push worker image') {
-      when {
-        branch 'master'
-      }
         docker.withRegistry('https://888283091142.dkr.ecr.us-west-2.amazonaws.com/dockersamples') {
           docker.image('dockersamples:worker').push('worker')
         }
