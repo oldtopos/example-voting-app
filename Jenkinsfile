@@ -1,7 +1,5 @@
 pipeline {
-  agent {
-    node {
-      label 'ubuntu1804'
+  node( 'ubuntu1804' ) {
     stage('Build result') {
       steps {
         sh 'docker build -t dockersamples/result ./result'
@@ -50,5 +48,4 @@ pipeline {
       }
     }
   }
-}
 }
