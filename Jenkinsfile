@@ -43,8 +43,8 @@
               verbose: true,
               transfers: [
                 sshTransfer(
-                  sourceFiles: "./docker-stack.yml, ./docker-stack.yml",
-                  removePrefix: ".",
+                  sourceFiles: "docker-stack.yml",
+                  removePrefix: "",
                   remoteDirectory: "/home/docker",
                   execCommand: "docker stack deploy --compose-file docker-stack.yml vote"
                 )
