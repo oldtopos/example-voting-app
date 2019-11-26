@@ -30,9 +30,9 @@ services:
     depends_on:
       - redis
     deploy:
-      replicas: 2
+      replicas: 10
       update_config:
-        parallelism: 2
+        parallelism: 10
       restart_policy:
         condition: on-failure
   result:
