@@ -1,7 +1,7 @@
 pipeline {
   agent {
     node {
-      label 'ubuntu-1604-aufs-stable'
+      label 'ubuntu1804'
     }
   }
   stages {
@@ -25,8 +25,8 @@ pipeline {
         branch 'master'
       }
       steps {
-        withDockerRegistry(credentialsId: 'dockerbuildbot-index.docker.io', url:'') {
-          sh 'docker push dockersamples/result'
+        docker.withRegistry('https://888283091142.dkr.ecr.us-west-2.amazonaws.com/dockersamples') {
+          docker.image('dockersamples:result').push('result')
         }
       }
     }
@@ -35,8 +35,8 @@ pipeline {
         branch 'master'
       }
       steps {
-        withDockerRegistry(credentialsId: 'dockerbuildbot-index.docker.io', url:'') {
-          sh 'docker push dockersamples/vote'
+        docker.withRegistry('https://888283091142.dkr.ecr.us-west-2.amazonaws.com/dockersamples') {
+          docker.image('dockersamples:vote').push('vote')
         }
       }
     }
@@ -45,8 +45,8 @@ pipeline {
         branch 'master'
       }
       steps {
-        withDockerRegistry(credentialsId: 'dockerbuildbot-index.docker.io', url:'') {
-          sh 'docker push dockersamples/worker'
+        docker.withRegistry('https://888283091142.dkr.ecr.us-west-2.amazonaws.com/dockersamples') {
+          docker.image('dockersamples:worker').push('worker')
         }
       }
     }
