@@ -3,13 +3,13 @@
       checkout scm
     }
     stage('Build result') {
-        sh 'docker build -t dockersamples/result ./result'
+        sh 'docker build -t dockersamples:result ./result'
     } 
     stage('Build vote') {
-        sh 'docker build -t dockersamples/vote ./vote'
+        sh 'docker build -t dockersamples:vote ./vote'
     }
     stage('Build worker') {
-        sh 'docker build -t dockersamples/worker ./worker'
+        sh 'docker build -t dockersamples:worker ./worker'
     }
     stage('Push result image') {
      try {
