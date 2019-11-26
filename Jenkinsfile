@@ -1,4 +1,7 @@
   node( 'ubuntu1804' ) {
+    stage('Checkout' ) {
+      checkout scm
+    }
     stage('Build result') {
         sh 'docker build -t dockersamples/result ./result'
     } 
